@@ -58,9 +58,9 @@ export const defaultConfiguration: Configuration = {
                     },
                 },
                 {
-                    name: 'Experimental',
-                    key: 'experimental',
-                    url: 'https://cdn.flybywiresim.com/addons/a32nx/experimental',
+                    name: 'Autopilot Custom FPM',
+                    key: 'Autopilot Custom FPM',
+                    url: 'https://cdn.flybywiresim.com/addons/a32nx/autopilot-custom-fpm',
                     alternativeUrls: [],
                     description: 'This version is similar to the development version, but contains custom systems ' +
                         'still being developed, including the new FBW Custom Flight Management System (cFMS). ' +
@@ -75,7 +75,7 @@ export const defaultConfiguration: Configuration = {
                         '**Please be aware that no support will be offered via Discord support channels.**',
                     releaseModel: {
                         type: 'githubBranch',
-                        branch: 'experimental',
+                        branch: 'autopilot-custom-fpm',
                     },
                 },
             ],

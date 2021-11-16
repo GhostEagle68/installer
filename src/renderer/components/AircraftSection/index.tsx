@@ -513,7 +513,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         </Tracks>
                     </div>
                     <div>
-                        <h5 className="text-base text-teal-50 uppercase">Experimental versions</h5>
+                        <h5 className="text-base text-teal-50 uppercase">Autopilot Custom</h5>
                         <Tracks>
                             {
                                 props.addon.tracks.filter((track) => track.isExperimental).map(track =>
