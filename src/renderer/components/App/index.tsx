@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import SimpleBar from 'simplebar-react';
 import { Logo } from "renderer/components/Logo";
 import SettingsSection from 'renderer/components/SettingsSection';
+import DebugSection from 'renderer/components/DebugSection';
 import AircraftSection from 'renderer/components/AircraftSection';
-
-import logo from 'renderer/assets/FBW-Tail.svg';
 
 import { Container, MainLayout, Content, PageHeader, PageSider, } from './styles';
 import ChangelogModal from '../ChangelogModal';
@@ -15,7 +14,7 @@ import { DataCache } from '../../utils/DataCache';
 import * as actionTypes from '../../redux/actionTypes';
 import store from '../../redux/store';
 import { SetAddonAndTrackLatestReleaseInfo } from "renderer/redux/types";
-import { Settings } from "tabler-icons-react";
+import { Code, Settings } from "tabler-icons-react";
 import { SidebarItem, SidebarAddon, SidebarPublisher } from "renderer/components/App/SideBar";
 import InstallerUpdate from "renderer/components/InstallerUpdate";
 import { WindowButtons } from "renderer/components/WindowActionButtons";
@@ -74,20 +73,31 @@ export const fetchLatestVersionNames = async (addon: Addon): Promise<void> => {
 };
 
 const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
+    const [addons] = useState<Addon[]>(
+        configuration.publishers.reduce((arr, curr) => {
+            arr.push(...curr.addons);
+            return arr;
+        }, [])
+    );
+
     useEffect(() => {
-        configuration.addons.forEach(fetchLatestVersionNames);
+        addons.forEach(fetchLatestVersionNames);
     }, []);
 
-    const [selectedItem, setSelectedItem] = useState<string>(configuration.addons[0].key);
+    const [selectedItem, setSelectedItem] = useState<string>(addons[0].key);
 
     let sectionToShow;
     switch (selectedItem) {
         case 'settings':
-            sectionToShow = <SettingsSection/>;
+            sectionToShow = <SettingsSection />;
+            break;
+
+        case 'debug':
+            sectionToShow = <DebugSection />;
             break;
 
         default:
-            sectionToShow = <AircraftSection addon={configuration.addons.find(x => x.key === selectedItem)}/>;
+            sectionToShow = <AircraftSection addon={addons.find(x => x.key === selectedItem)}/>;
             break;
     }
 
@@ -111,28 +121,44 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                         <div className="h-full pt-14 flex flex-row justify-start">
                             <PageSider className="w-72 z-40 flex-none bg-navy-medium shadow-2xl">
                                 <div className="h-full flex flex-col divide-y divide-gray-700">
-                                    <SidebarPublisher name="FlyByWire Simulations" logo={logo}>
+                                    {
+                                        configuration.publishers.map(publisher => (
+                                            <SidebarPublisher name={publisher.name} logo={publisher.logoUrl}>
+                                                {
+                                                    publisher.addons.map(addon => (
+                                                        <SidebarAddon
+                                                            key={addon.key}
+                                                            addon={addon}
+                                                            isSelected={selectedItem === addon.key}
+                                                            handleSelected={() => setSelectedItem(addon.key)}
+                                                        />
+                                                    ))
+                                                }
+                                            </SidebarPublisher>
+                                        ))
+                                    }
+
+                                    <div className="mt-auto">
                                         {
-                                            configuration.addons.map(addon => {
-                                                return (
-                                                    <SidebarAddon
-                                                        key={addon.key}
-                                                        addon={addon}
-                                                        isSelected={selectedItem === addon.key}
-                                                        handleSelected={() => setSelectedItem(addon.key)}
-                                                    />
-                                                );
-                                            })
+                                            process.env.NODE_ENV === "development" &&
+                                            <SidebarItem iSelected={selectedItem === 'debug'} onClick={() => setSelectedItem('debug')}>
+                                                <Code className="text-gray-100 ml-2 mr-3" size={24} />
+
+                                                <div className="flex flex-col">
+                                                    <span className="text-lg text-gray-200 font-semibold">Debug</span>
+                                                </div>
+                                            </SidebarItem>
                                         }
-                                    </SidebarPublisher>
 
-                                    <SidebarItem className="mt-auto" iSelected={selectedItem === 'settings'} onClick={() => setSelectedItem('settings')}>
-                                        <Settings className="text-gray-100 ml-2 mr-3" size={24} />
+                                        <SidebarItem iSelected={selectedItem === 'settings'} onClick={() => setSelectedItem('settings')}>
+                                            <Settings className="text-gray-100 ml-2 mr-3" size={24} />
 
-                                        <div className="flex flex-col">
-                                            <span className="text-lg text-gray-200 font-semibold">Settings</span>
-                                        </div>
-                                    </SidebarItem>
+                                            <div className="flex flex-col">
+                                                <span className="text-lg text-gray-200 font-semibold">Settings</span>
+                                            </div>
+                                        </SidebarItem>
+                                    </div>
+
                                 </div>
                             </PageSider>
                             <Content className="overflow-y-scroll bg-navy m-0">
