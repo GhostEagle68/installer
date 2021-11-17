@@ -64,8 +64,8 @@ export const defaultConfiguration: Configuration = {
                             },
                         },
                         {
-                            name: 'Autopilot Custom FPM',
-                            key: 'Autopilot Custom FPM',
+                            name: 'Autopilot Custom',
+                            key: 'Autopilot Custom',
                             url: 'https://cdn.flybywiresim.com/addons/a32nx/autopilot-custom-fpm',
                             alternativeUrls: [],
                             description: 'This version is similar to the development version, but contains custom systems ' +
