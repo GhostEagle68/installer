@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Check, ChevronDown, Download, Refresh } from "tabler-icons-react";
+import { ArrowBarToLeft, Check, ChevronDown, Download, Refresh } from "tabler-icons-react";
 import { useSelector, } from "react-redux";
 import { InstallerStore } from "renderer/redux/store";
 import { InstallStatus } from "renderer/components/AircraftSection";
@@ -27,6 +27,21 @@ export const SidebarPublisher: React.FC<SidebarPublisherProps> = ({ name, logo, 
                 <ChevronDown className={`text-gray-200 transform transition-transform duration-300 ${expanded ? 'rotate-0' : '-rotate-90'}`} size={28} />
                 <img className="w-4 ml-1 mr-2" src={logo} alt="" />
                 <span className="text-base text-gray-100">{name}</span>
+            </span>
+            {expanded && children}
+        </>
+    );
+};
+
+export const SidebarCompact: React.FC<SidebarPublisherProps> = ({ logo, children }) => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <>
+            <span className="bg-navy-lighter flex flex-row items-end text-lg text-white pl-3 py-3.5">
+                <ArrowBarToLeft onClick={() => setExpanded(old => !old)} className={`text-gray-200 transform cursor-pointer transform ${expanded ? 'rotate-0' : '-rotate-180'}`} size={35} />
+                <img className="ml-1 mr-2" src={logo} alt="" />
+                <span className="text-base text-gray-100"></span>
             </span>
             {expanded && children}
         </>
