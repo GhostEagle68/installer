@@ -15,6 +15,7 @@ import * as actionTypes from '../../redux/actionTypes';
 import store from '../../redux/store';
 import { SetAddonAndTrackLatestReleaseInfo } from "renderer/redux/types";
 import { Code, Settings } from "tabler-icons-react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SidebarItem, SidebarAddon, SidebarPublisher, SidebarCompact } from "renderer/components/App/SideBar";
 import InstallerUpdate from "renderer/components/InstallerUpdate";
 import { WindowButtons } from "renderer/components/WindowActionButtons";
@@ -119,29 +120,28 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                         </div>
 
                         <div className="h-full pt-14 flex flex-row justify-start">
-                            <SidebarCompact name={''} logo={''}>
-                                <PageSider className="w-72 z-40 flex-none bg-navy-medium shadow-2xl">
-                                    <div className="h-full flex flex-col divide-y divide-gray-700">
-                                        {
-                                            configuration.publishers.map(publisher => (
-                                                <SidebarPublisher name={publisher.name} logo={publisher.logoUrl}>
-                                                    {
-                                                        publisher.addons.map(addon => (
-                                                            <SidebarAddon
-                                                                key={addon.key}
-                                                                addon={addon}
-                                                                isSelected={selectedItem === addon.key}
-                                                                handleSelected={() => setSelectedItem(addon.key)}
-                                                            />
-                                                        ))
-                                                    }
-                                                </SidebarPublisher>
-                                            ))
-                                        }
+                            <PageSider className="w-72 z-40 flex-none bg-navy-medium shadow-2xl">
+                                <div className="h-full flex flex-col divide-y divide-gray-700">
+                                    {
+                                        configuration.publishers.map(publisher => (
+                                            <SidebarPublisher name={publisher.name} logo={publisher.logoUrl}>
+                                                {
+                                                    publisher.addons.map(addon => (
+                                                        <SidebarAddon
+                                                            key={addon.key}
+                                                            addon={addon}
+                                                            isSelected={selectedItem === addon.key}
+                                                            handleSelected={() => setSelectedItem(addon.key)}
+                                                        />
+                                                    ))
+                                                }
+                                            </SidebarPublisher>
+                                        ))
+                                    }
 
-                                        <div className="mt-auto">
-                                            {
-                                                process.env.NODE_ENV === "development" &&
+                                    <div className="mt-auto">
+                                        {
+                                            process.env.NODE_ENV === "development" &&
                                             <SidebarItem iSelected={selectedItem === 'debug'} onClick={() => setSelectedItem('debug')}>
                                                 <Code className="text-gray-100 ml-2 mr-3" size={24} />
 
@@ -149,20 +149,19 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                                                     <span className="text-lg text-gray-200 font-semibold">Debug</span>
                                                 </div>
                                             </SidebarItem>
-                                            }
+                                        }
 
-                                            <SidebarItem iSelected={selectedItem === 'settings'} onClick={() => setSelectedItem('settings')}>
-                                                <Settings className="text-gray-100 ml-2 mr-3" size={24} />
+                                        <SidebarItem iSelected={selectedItem === 'settings'} onClick={() => setSelectedItem('settings')}>
+                                            <Settings className="text-gray-100 ml-2 mr-3" size={24} />
 
-                                                <div className="flex flex-col">
-                                                    <span className="text-lg text-gray-200 font-semibold">Settings</span>
-                                                </div>
-                                            </SidebarItem>
-                                        </div>
-
+                                            <div className="flex flex-col">
+                                                <span className="text-lg text-gray-200 font-semibold">Settings</span>
+                                            </div>
+                                        </SidebarItem>
                                     </div>
-                                </PageSider>
-                            </SidebarCompact>
+
+                                </div>
+                            </PageSider>
                             <Content className="overflow-y-scroll bg-navy m-0">
                                 {sectionToShow}
                             </Content>
