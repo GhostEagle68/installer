@@ -34,7 +34,7 @@ export const SidebarPublisher: React.FC<SidebarPublisherProps> = ({ name, logo, 
 };
 
 export const SidebarCompact: React.FC<SidebarPublisherProps> = ({ logo, children }) => {
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
 
     return (
         <>
