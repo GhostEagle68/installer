@@ -110,7 +110,7 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
             <SimpleBar>
                 <Container>
                     <MainLayout className="overflow-hidden">
-                        <div className="absolute w-full h-14 z-50 flex flex-row pl-5 items-center bg-navy-400 shadow-xl">
+                        <div className="absolute w-full h-14 z-50 flex flex-row pl-5 items-center bg-navy-dark shadow-xl">
                             <PageHeader className="h-full flex-1 flex flex-row items-stretch">
                                 <Logo />
                                 <InstallerUpdate />
@@ -120,8 +120,8 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                         </div>
 
                         <div className="h-full pt-14 flex flex-row justify-start">
-                            <PageSider className="w-72 z-40 flex-none bg-navy-medium shadow-2xl">
-                                <div className="h-full flex flex-col divide-y divide-gray-700">
+                            <PageSider className="w-72 z-40 flex-none bg-navy shadow-2xl">
+                                <div className="h-full flex flex-col divide-y divide-navy-dark">
                                     {
                                         configuration.publishers.map(publisher => (
                                             <SidebarPublisher name={publisher.name} logo={publisher.logoUrl}>
@@ -162,7 +162,7 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
 
                                 </div>
                             </PageSider>
-                            <Content className="overflow-y-scroll bg-navy m-0">
+                            <Content className="overflow-y-scroll bg-navy-dark m-0">
                                 {sectionToShow}
                             </Content>
                         </div>

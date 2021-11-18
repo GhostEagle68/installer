@@ -29,23 +29,21 @@ export const Track: React.FC<TrackProps> = ({ isSelected, isInstalled, handleSel
 
     const makeBorderStyle = () => {
         if (isInstalled) {
-            return 'bg-green-600';
+            return 'bg-green-lime';
         } else {
             if (isSelected) {
-                return 'bg-teal-light-contrast';
-            } else {
-                return 'bg-gray-600';
+                return 'bg-blue-sky';
             }
         }
     };
 
     return (
         <div
-            className={`${isSelected ? 'selected' : 'selector'} ${isInstalled ? 'installed' : ''} w-60 flex flex-row items-center ${isSelected ? 'bg-navy-lightest' : 'bg-navy-lighter'} rounded-md transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer`}
+            className={`${isSelected ? 'selected' : 'selector'} ${isInstalled ? 'installed' : ''} w-60 flex flex-row items-center ${isSelected ? 'bg-navy-light' : 'bg-navy'} rounded-md transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer`}
             onClick={() => handleSelected(track)}
         >
             <div
-                className={`${makeBorderStyle()} w-1 h-12 rounded-r-xl transition-all duration-200 transform ${isSelected ? 'scale-y-100' : 'scale-y-50'}`}/>
+                className={`${makeBorderStyle()} w-1 h-12 rounded-r-xl transition-all duration-200 transform ${isInstalled ? 'scale-y-100' : 'scale-y-50'}`}/>
             <div className="flex flex-col px-5 py-2">
                 <span className="text-xl text-gray-50">{track.name}</span>
                 <span className="text-lg text-teal-50 -mt-0.5"><code>{latestVersionName}</code></span>

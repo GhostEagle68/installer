@@ -19,6 +19,8 @@ import {
     SwitchButton,
     TopContainer,
     UpdateButton,
+    ContentDiv,
+    NewContainer,
     VersionHistoryContainer
 } from './styles';
 import fs from "fs-extra";
@@ -30,7 +32,6 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { deleteDownload, registerDownload, updateDownloadProgress } from 'renderer/redux/actions/downloads.actions';
 import { callWarningModal } from "renderer/redux/actions/warningModal.actions";
 import _ from 'lodash';
-import { Version, Versions } from "renderer/components/AircraftSection/VersionHistory";
 import { Track, Tracks } from "renderer/components/AircraftSection/TrackSelector";
 import { FragmenterInstaller, needsUpdate, getCurrentInstall } from "@flybywiresim/fragmenter";
 import store, { InstallerStore } from '../../redux/store';
@@ -44,6 +45,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import settings from "common/settings";
 import { ipcRenderer } from 'electron';
+import { Version, Versions } from './VersionHistory';
 
 // Props coming from renderer/components/App
 type TransferredProps = {
@@ -477,22 +479,28 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
         return state.liveries.map((entry) => entry.livery);
     });
 
+    const ReleaseHistory = () =>{
+        return (
+            <VersionHistoryContainer>
+                <h3 className="font-semibold text-white-titleContrast">Release History</h3>
+                <Versions>
+                    {
+                        releases.map((version, idx) =>
+                            <Version key={idx} index={idx} version={version} />
+                        )
+                    }
+                </Versions>
+            </VersionHistoryContainer>
+        );
+    };
+
     return (
-        <div className={`bg-navy ${wait ? 'hidden' : 'visible'}`}>
+        <div className={`bg-navy-dark ${wait ? 'hidden' : 'visible'}`}>
             <HeaderImage>
                 <ModelInformationContainer>
                     <ModelName>{props.addon.name}</ModelName>
                     <ModelSmallDesc>{props.addon.shortDescription}</ModelSmallDesc>
                 </ModelInformationContainer>
-                <SelectionContainer>
-                    {msfsIsOpen !== MsfsStatus.Closed && <>
-                        <ButtonContainer>
-                            <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
-                            <DisabledButton text='Update' />
-                        </ButtonContainer>
-                    </>}
-                    {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
-                </SelectionContainer>
             </HeaderImage>
             <DownloadProgress percent={download?.progress} strokeColor="#00c2cc" trailColor="transparent" showInfo={false} status="active" />
             <Content>
@@ -503,7 +511,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                 }
                 <TopContainer className={liveries.length > 0 ? 'mt-0' : '-mt-5'}>
                     <div>
-                        <h5 className="text-base text-teal-50 uppercase">Mainline versions</h5>
+                        <h5 className="text-base text-white-titleContrast uppercase">Mainline versions</h5>
                         <Tracks>
                             {
                                 props.addon.tracks.filter((track) => !track.isExperimental).map(track =>
@@ -520,7 +528,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         </Tracks>
                     </div>
                     <div>
-                        <h5 className="text-base text-teal-50 uppercase">Autopilot Custom</h5>
+                        <h5 className="text-base text-white-titleContrast uppercase">Autopilot Custom</h5>
                         <Tracks>
                             {
                                 props.addon.tracks.filter((track) => track.isExperimental).map(track =>
@@ -537,29 +545,34 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         </Tracks>
                     </div>
                 </TopContainer>
+                <NewContainer>
+                    <ContentDiv>
+                        <h3 className="font-semibold text-white-titleContrast">About</h3>
+                        <h3 onClick={ReleaseHistory} className="font-semibold text-white-titleContrast">Release Notes</h3>
+                        <SelectionContainer>
+                            {msfsIsOpen !== MsfsStatus.Closed && <>
+                                <ButtonContainer>
+                                    <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
+                                    <DisabledButton text='Update' />
+                                </ButtonContainer>
+                            </>}
+                            {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
+                        </SelectionContainer>
+                    </ContentDiv>
+                </NewContainer>
                 <LeftContainer>
                     <DetailsContainer>
-                        <h3 className="font-semibold text-teal-50">About This Version</h3>
+                        <h3 className="font-semibold text-white-titleContrast">About This Version</h3>
                         <ReactMarkdown
                             className="text-lg text-gray-300"
                             children={selectedTrack?.description ?? ''}
                             remarkPlugins={[remarkGfm]}
                             linkTarget={"_blank"}
                         />
-                        <h3 className="font-semibold text-teal-50">Details</h3>
+                        <h3 className="font-semibold text-white-titleContrast">Details</h3>
                         <p className="text-lg text-gray-300">{props.addon.description}</p>
                     </DetailsContainer>
                 </LeftContainer>
-                <VersionHistoryContainer>
-                    <h3 className="font-semibold text-teal-50">Release History</h3>
-                    <Versions>
-                        {
-                            releases.map((version, idx) =>
-                                <Version key={idx} index={idx} version={version} />
-                            )
-                        }
-                    </Versions>
-                </VersionHistoryContainer>
             </Content>
         </div>
     );

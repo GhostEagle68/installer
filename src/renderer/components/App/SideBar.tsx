@@ -10,7 +10,7 @@ export type SidebarItemProps = { enabled?: boolean, iSelected: boolean, onClick:
 export const SidebarItem: React.FC<SidebarItemProps> = ({ enabled = true, iSelected, onClick, children, className }) => {
     return (
         <div
-            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-navy-lighter' : 'bg-navy-light-contrast'} ${enabled ? 'hover:bg-navy-lightest' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
+            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-navy' : 'bg-navy-dark'} ${enabled ? 'hover:bg-navy-light' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
             onClick={onClick}
         >{children}</div>
     );
@@ -23,7 +23,7 @@ export const SidebarPublisher: React.FC<SidebarPublisherProps> = ({ name, logo, 
 
     return (
         <>
-            <span onClick={() => setExpanded(old => !old)} className="flex flex-row items-center transform transition-colors duration-300 hover:bg-navy-lightest text-lg text-white pl-3 py-3.5 cursor-pointer">
+            <span onClick={() => setExpanded(old => !old)} className="flex flex-row items-center transform transition-colors duration-300 hover:bg-navy-light text-lg text-white pl-3 py-3.5 cursor-pointer">
                 <ChevronDown className={`text-gray-200 transform transition-transform duration-300 ${expanded ? 'rotate-0' : '-rotate-90'}`} size={28} />
                 <img className="w-4 ml-1 mr-2" src={logo} alt="" />
                 <span className="text-base text-gray-100">{name}</span>
@@ -39,7 +39,7 @@ export const SidebarCompact: React.FC<SidebarPublisherProps> = ({ logo, children
     return (
         <>
             <span className="bg-navy-lighter flex flex-row items-end text-lg text-white pl-3 py-3.5">
-                <ArrowBarToLeft onClick={() => setExpanded(old => !old)} className={`text-gray-200 transform cursor-pointer transform ${expanded ? 'rotate-0' : '-rotate-180'}`} size={35} />
+                <ArrowBarToLeft onClick={() => setExpanded(old => !old)} className={`text-gray-200 transform cursor-pointer ${expanded ? 'rotate-0' : '-rotate-180'}`} size={35} />
                 <img className="ml-1 mr-2" src={logo} alt="" />
                 <span className="text-base text-gray-100"></span>
             </span>
@@ -91,15 +91,15 @@ export const SidebarAddon: React.FC<SidebarAddonProps> = ({ addon, isSelected, h
     const Icon = () => {
         switch (icon) {
             case 'notAvailable':
-                return <AlertTriangle className="text-gray-700 ml-auto mr-4" size={28} />;
+                return <AlertTriangle className="text-red-offred ml-auto mr-4" size={28} />;
             case 'install':
-                return <ArrowBarToDown className="text-gray-400 ml-auto mr-4" size={28} />;
+                return <ArrowBarToDown className="text-blue-cyan ml-auto mr-4" size={28} />;
             case 'installing':
-                return <Rotate2 className="text-yellow-400 ml-auto mr-4 animate-spin-reverse" size={28} />;
+                return <Rotate2 className="text-blue-cyan ml-auto mr-4 animate-spin-reverse" size={28} />;
             case 'installed':
-                return <CircleCheck className="text-green-400 ml-auto mr-4" size={28} />;
+                return <CircleCheck className="text-green-lime ml-auto mr-4" size={28} />;
             case 'update':
-                return <ArrowBarToDown className="text-yellow-400 ml-auto mr-4" size={28} />;
+                return <ArrowBarToDown className="text-blue-cyan ml-auto mr-4" size={28} />;
         }
     };
 

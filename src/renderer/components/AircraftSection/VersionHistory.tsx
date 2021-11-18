@@ -11,6 +11,10 @@ import settings from "common/settings";
 export const Versions = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #171E2C;
+  border-radius: 0.375rem;
+  padding: 5px;
+
 `;
 
 const GITHUB_RELEASE_BASE_URL = 'https://github.com/flybywiresim/a32nx/releases/tag/';

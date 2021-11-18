@@ -141,10 +141,37 @@ export const LeftContainer = styled.div`
   grid-row: 3;
 `;
 
-export const DetailsContainer = styled.div``;
+export const DetailsContainer = styled.div`
+background-color: #171E2C;
+border-radius: 0.375rem;
+padding: 10px;
+`;
+
+export const ContentDiv = styled.div`
+grid-column: start / end;
+grid-row: 2;
+
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: left;
+background-color: #171E2C;
+border-radius: 0.375rem;
+padding: 10px;
+`;
 
 export const VersionHistoryContainer = styled.div`
   grid-row: 3 / span 2;
+  background-color: #171E2C;
+  border-radius: 0.375rem;
+  padding: 5px;
+`;
+
+export const NewContainer = styled.div`
+  grid-row: 3 / span 2;
+  background-color: #171E2C;
+  border-radius: 0.375rem;
+  padding: 5px;
 `;
 
 export const DownloadProgress = styled(Progress)`
@@ -189,15 +216,18 @@ export const ButtonContainer = styled.div`
 
 export const StateText = styled(props => <span className={props.className}>{props.children}</span>)`
   font-size: ${fontSizes.huge} !important;
-  color: ${colors.titleContrast};  
+  color: ${colors.titleContrast};
+  background-color: #1F2A3C;
+  border-radius: 0.375rem;
+  padding: 5px;
 `;
 
 export const UpdateButton = styled(
     props =>
         <InstallButtonTemplate
             style={{
-                background: "#fa8c16",
-                borderColor: "#fa8c16"
+                background: "#00CCFF",
+                borderColor: "#00CCFF"
             }}
             {...props}
         >Update</InstallButtonTemplate>)``;
@@ -206,8 +236,8 @@ export const SwitchButton = styled(
     props =>
         <InstallButtonTemplate
             style={{
-                background: "#BC05E1",
-                borderColor: "#BC05E1"
+                background: "#00CCFF",
+                borderColor: "#00CCFF"
             }}
             {...props}
         >Switch version</InstallButtonTemplate>)``;
@@ -217,8 +247,8 @@ export const CancelButton = styled(
         <InstallButtonTemplate
             icon={null}
             style={{
-                background: "#fa3516",
-                borderColor: "#fa3516"
+                background: "#FF2D1A",
+                borderColor: "#FF2D1A"
             }}
             {...props}
         />)``;
@@ -229,8 +259,8 @@ export const InstalledButton = styled(
             icon={null}
             style={{
                 color: "#dddddd",
-                background: "#2e995e",
-                borderColor: "#2e995e",
+                background: "#7AF53D",
+                borderColor: "#7AF53D",
                 pointerEvents: "none"
             }}
             {...props}

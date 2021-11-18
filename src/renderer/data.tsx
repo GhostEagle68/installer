@@ -1,6 +1,6 @@
 import { Configuration } from "./utils/InstallerConfiguration";
 
-import FBWLogo from "renderer/assets/FBW-Tail.svg";
+import FBWLogo from "renderer/assets/new fbw logo.png";
 import SynapticLogo from "renderer/assets/Synaptic-Logo.png";
 import A320NoseSVG from "renderer/assets/a32nx_nose.svg";
 import A380NoseSVG from "renderer/assets/a380x_nose.svg";
