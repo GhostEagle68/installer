@@ -3,7 +3,7 @@ import { Select, Progress } from 'antd';
 import styled from 'styled-components';
 import { DownloadOutlined } from '@ant-design/icons';
 import { colors, dropShadow, fontSizes } from "renderer/style/theme";
-import headerBackground from "renderer/assets/a32nx-background.png";
+import headerBackground from "renderer/assets/EZYBG.png";
 
 export const Container = styled.div<{ wait: number }>`
     visibility: ${props => props.wait ? 'hidden' : 'visible'};
@@ -12,7 +12,7 @@ export const Container = styled.div<{ wait: number }>`
 export const HeaderImage = styled.div`
     height: 35vh;
     max-height: 400px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(${headerBackground});
+    background-image: url(${headerBackground});
     background-size: cover;
     background-position: center;
     color: white;
@@ -149,7 +149,6 @@ padding: 10px;
 
 export const ContentDiv = styled.div`
 grid-column: start / end;
-grid-row: 2;
 
 display: flex;
 flex-direction: column;
@@ -160,6 +159,17 @@ border-radius: 0.375rem;
 padding: 10px;
 `;
 
+export const ContDivButtons = styled.div`
+display: inline-block;
+font-size: ${fontSizes.huge} !important;
+color: ${colors.titleContrast};
+cursor: pointer;
+&:hover {
+  background-color: #1F2A3C;
+  border-radius: 0.375rem;
+}
+`;
+
 export const VersionHistoryContainer = styled.div`
   grid-row: 3 / span 2;
   background-color: #171E2C;
@@ -168,10 +178,10 @@ export const VersionHistoryContainer = styled.div`
 `;
 
 export const NewContainer = styled.div`
-  grid-row: 3 / span 2;
-  background-color: #171E2C;
+  grid-row: 3;
   border-radius: 0.375rem;
   padding: 5px;
+  background-color: #171E2C;
 `;
 
 export const DownloadProgress = styled(Progress)`
@@ -259,8 +269,8 @@ export const InstalledButton = styled(
             icon={null}
             style={{
                 color: "#dddddd",
-                background: "#7AF53D",
-                borderColor: "#7AF53D",
+                background: "#00b853",
+                borderColor: "#00b853",
                 pointerEvents: "none"
             }}
             {...props}

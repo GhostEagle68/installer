@@ -13,15 +13,14 @@ import {
     LeftContainer,
     DialogContainer,
     ModelInformationContainer,
-    ModelName,
-    ModelSmallDesc,
     StateText,
     SwitchButton,
     TopContainer,
     UpdateButton,
     ContentDiv,
     NewContainer,
-    VersionHistoryContainer
+    VersionHistoryContainer,
+    ContDivButtons
 } from './styles';
 import fs from "fs-extra";
 import * as path from 'path';
@@ -46,6 +45,8 @@ import remarkGfm from 'remark-gfm';
 import settings from "common/settings";
 import { ipcRenderer } from 'electron';
 import { Version, Versions } from './VersionHistory';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { InfoCircle } from 'tabler-icons-react';
 
 // Props coming from renderer/components/App
 type TransferredProps = {
@@ -497,10 +498,6 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
     return (
         <div className={`bg-navy-dark ${wait ? 'hidden' : 'visible'}`}>
             <HeaderImage>
-                <ModelInformationContainer>
-                    <ModelName>{props.addon.name}</ModelName>
-                    <ModelSmallDesc>{props.addon.shortDescription}</ModelSmallDesc>
-                </ModelInformationContainer>
             </HeaderImage>
             <DownloadProgress percent={download?.progress} strokeColor="#00c2cc" trailColor="transparent" showInfo={false} status="active" />
             <Content>
@@ -509,9 +506,12 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         <LiveryConversionDialog />
                     </DialogContainer>
                 }
+                <ModelInformationContainer>
+                    <h5 className="text-4xl text-white-titleContrast ">Choose your {props.addon.name} Version</h5>
+                </ModelInformationContainer>
                 <TopContainer className={liveries.length > 0 ? 'mt-0' : '-mt-5'}>
+
                     <div>
-                        <h5 className="text-base text-white-titleContrast uppercase">Mainline versions</h5>
                         <Tracks>
                             {
                                 props.addon.tracks.filter((track) => !track.isExperimental).map(track =>
@@ -526,9 +526,9 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                                 )
                             }
                         </Tracks>
+                        <h5 className="text-base text-white-titleContrast ">Mainline Releases</h5>
                     </div>
                     <div>
-                        <h5 className="text-base text-white-titleContrast uppercase">Autopilot Custom</h5>
                         <Tracks>
                             {
                                 props.addon.tracks.filter((track) => track.isExperimental).map(track =>
@@ -543,33 +543,34 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                                 )
                             }
                         </Tracks>
+                        <h5 className="text-base text-white-titleContrast ">Experimental Releases</h5>
                     </div>
                 </TopContainer>
                 <NewContainer>
                     <ContentDiv>
-                        <h3 className="font-semibold text-white-titleContrast">About</h3>
-                        <h3 onClick={ReleaseHistory} className="font-semibold text-white-titleContrast">Release Notes</h3>
-                        <SelectionContainer>
-                            {msfsIsOpen !== MsfsStatus.Closed && <>
-                                <ButtonContainer>
-                                    <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
-                                    <DisabledButton text='Update' />
-                                </ButtonContainer>
-                            </>}
-                            {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
-                        </SelectionContainer>
+                        <ContDivButtons className="font-semibold text-white-titleContrast">About</ContDivButtons>
+                        <ContDivButtons onClick={ReleaseHistory} className="font-semibold text-white-titleContrast">Release History</ContDivButtons>
                     </ContentDiv>
+                    <SelectionContainer>
+                        {msfsIsOpen !== MsfsStatus.Closed && <>
+                            <ButtonContainer>
+                                <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
+                                <DisabledButton text='Update' />
+                            </ButtonContainer>
+                        </>}
+                        {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
+                    </SelectionContainer>
                 </NewContainer>
                 <LeftContainer>
                     <DetailsContainer>
-                        <h3 className="font-semibold text-white-titleContrast">About This Version</h3>
+                        <h3 className="font-semibold text-white-titleContrast">Description</h3>
                         <ReactMarkdown
                             className="text-lg text-gray-300"
                             children={selectedTrack?.description ?? ''}
                             remarkPlugins={[remarkGfm]}
                             linkTarget={"_blank"}
                         />
-                        <h3 className="font-semibold text-white-titleContrast">Details</h3>
+                        <h3 className="font-semibold text-white-titleContrast">About the {props.addon.aircraftName}</h3>
                         <p className="text-lg text-gray-300">{props.addon.description}</p>
                     </DetailsContainer>
                 </LeftContainer>
