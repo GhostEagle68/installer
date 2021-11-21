@@ -45,7 +45,7 @@ import remarkGfm from 'remark-gfm';
 import settings from "common/settings";
 import { ipcRenderer } from 'electron';
 import { Version, Versions } from './VersionHistory';
-import { Adjustments, InfoCircle, Notebook, Paint, } from 'tabler-icons-react';
+import { Adjustments, AlertCircle, Notebook, Paint, } from 'tabler-icons-react';
 
 // Props coming from renderer/components/App
 type TransferredProps = {
@@ -544,6 +544,15 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         </Tracks>
                         {props.addon.tracks.filter((track) => track.isExperimental).length > 0 && <h5 className="text-base text-white-titleContrast ">Experimental Releases</h5>}
                     </div>
+                    <div className="bg-navy-navy2 border-l-4 border-blue-cyan rounded-md text-white-titleContrast px-4 py-3 shadow-md max-w-prose  " >
+                        <div className="flex">
+                            <div className="py-1"><AlertCircle className="text-blue-cyan mr-4" size={40} /></div>
+                            <div>
+                                <p className="font-bold text-2x1">Experimental Version Update</p>
+                                <p className="text-2x1 break-words">Due to cFMS being merged into experimental, the experimental branch will be on hold until the next feature testing cycle begins.</p>
+                            </div>
+                        </div>
+                    </div>
                 </TopContainer>
                 <NewContainer>
                     <ContentDiv>
@@ -562,7 +571,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                             </button>
                             <br></br>
                             <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
-                                <InfoCircle className={`hover:text-blue-cyan`} size={30} />
+                                <AlertCircle className={`hover:text-blue-cyan`} size={30} />
                                 <span className="pl-3">About</span>
                             </button>
                         </ContDivButtons>
