@@ -223,7 +223,13 @@ export const StateText = styled(props => <span className={props.className}>{prop
   color: ${colors.titleContrast};
   background-color: #1F2A3C;
   border-radius: 0.375rem;
-  padding: 5px;
+  border-left-style: solid;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-color: #00E0FE;
+  border-width: 5px;
+  padding: 10px;
 `;
 
 export const UpdateButton = styled(

@@ -576,9 +576,10 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                             </button>
                         </ContDivButtons>
                     </ContentDiv>
-                    <SelectionContainer className="pl-5">
+                    <SelectionContainer>
                         {msfsIsOpen !== MsfsStatus.Closed && <>
                             <ButtonContainer>
+                                <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
                                 <DisabledButton text='Update' />
                             </ButtonContainer>
                         </>}
