@@ -2,6 +2,8 @@ import { css } from "styled-components";
 
 export const fontSizes = {
     huge: '20px',
+    small: '18px',
+    big: '25px'
 };
 
 export const colors = {

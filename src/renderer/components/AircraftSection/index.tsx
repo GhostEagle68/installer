@@ -45,8 +45,7 @@ import remarkGfm from 'remark-gfm';
 import settings from "common/settings";
 import { ipcRenderer } from 'electron';
 import { Version, Versions } from './VersionHistory';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { InfoCircle } from 'tabler-icons-react';
+import { Adjustments, InfoCircle, Notebook, Paint, } from 'tabler-icons-react';
 
 // Props coming from renderer/components/App
 type TransferredProps = {
@@ -480,6 +479,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
         return state.liveries.map((entry) => entry.livery);
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const ReleaseHistory = () =>{
         return (
             <VersionHistoryContainer>
@@ -496,7 +496,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
     };
 
     return (
-        <div className={`bg-navy-dark ${wait ? 'hidden' : 'visible'}`}>
+        <div className={`bg-navy-light ${wait ? 'hidden' : 'visible'}`}>
             <HeaderImage>
             </HeaderImage>
             <DownloadProgress percent={download?.progress} strokeColor="#00c2cc" trailColor="transparent" showInfo={false} status="active" />
@@ -507,10 +507,9 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                     </DialogContainer>
                 }
                 <ModelInformationContainer>
-                    <h5 className="text-4xl text-white-titleContrast ">Choose your {props.addon.name} Version</h5>
+                    <h5 className="text-5xl text-white-titleContrast ">Choose your {props.addon.name} Version</h5>
                 </ModelInformationContainer>
                 <TopContainer className={liveries.length > 0 ? 'mt-0' : '-mt-5'}>
-
                     <div>
                         <Tracks>
                             {
@@ -548,22 +547,39 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                 </TopContainer>
                 <NewContainer>
                     <ContentDiv>
-                        <ContDivButtons className="font-semibold text-white-titleContrast">About</ContDivButtons>
-                        <ContDivButtons onClick={ReleaseHistory} className="font-semibold text-white-titleContrast">Release History</ContDivButtons>
+                        <ContDivButtons>
+                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                                <Adjustments className={`hover:text-blue-cyan `} size={30} />
+                                <span className="pl-3">Configure</span>
+                            </button>
+                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                                <Notebook className={`hover:text-blue-cyan`} size={30} />
+                                <span className="pl-3">Release Notes</span>
+                            </button>
+                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                                <Paint className={`hover:text-blue-cyan`} size={30} />
+                                <span className="pl-3">Liveries</span>
+                            </button>
+                            <br></br>
+                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                                <InfoCircle className={`hover:text-blue-cyan`} size={30} />
+                                <span className="pl-3">About</span>
+                            </button>
+                        </ContDivButtons>
                     </ContentDiv>
-                    <SelectionContainer>
+                    <SelectionContainer className="pl-5">
                         {msfsIsOpen !== MsfsStatus.Closed && <>
                             <ButtonContainer>
-                                <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
                                 <DisabledButton text='Update' />
                             </ButtonContainer>
                         </>}
                         {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
                     </SelectionContainer>
+                    <br></br>
                 </NewContainer>
                 <LeftContainer>
                     <DetailsContainer>
-                        <h3 className="font-semibold text-white-titleContrast">Description</h3>
+                        <h3 className="font-semibold text-white-titleContrast">About</h3>
                         <ReactMarkdown
                             className="text-lg text-gray-300"
                             children={selectedTrack?.description ?? ''}

@@ -26,7 +26,7 @@ module.exports = {
                     'lightest': '#273347',
                     'lighter': '#222c3d',
                     'dark': '#0E131B',
-                    'navy': '#171E2C',
+                    'navy2': '#171E2C',
                     'light': '#1F2A3C',
                 },
                 red: {

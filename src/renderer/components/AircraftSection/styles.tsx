@@ -161,13 +161,7 @@ padding: 10px;
 
 export const ContDivButtons = styled.div`
 display: inline-block;
-font-size: ${fontSizes.huge} !important;
-color: ${colors.titleContrast};
-cursor: pointer;
-&:hover {
-  background-color: #1F2A3C;
-  border-radius: 0.375rem;
-}
+font-size: ${fontSizes.big} !important;
 `;
 
 export const VersionHistoryContainer = styled.div`
@@ -225,7 +219,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StateText = styled(props => <span className={props.className}>{props.children}</span>)`
-  font-size: ${fontSizes.huge} !important;
+  font-size: ${fontSizes.small} !important;
   color: ${colors.titleContrast};
   background-color: #1F2A3C;
   border-radius: 0.375rem;
@@ -237,7 +231,7 @@ export const UpdateButton = styled(
         <InstallButtonTemplate
             style={{
                 background: "#00CCFF",
-                borderColor: "#00CCFF"
+                borderColor: "#00CCFF",
             }}
             {...props}
         >Update</InstallButtonTemplate>)``;
@@ -258,7 +252,8 @@ export const CancelButton = styled(
             icon={null}
             style={{
                 background: "#FF2D1A",
-                borderColor: "#FF2D1A"
+                borderColor: "#FF2D1A",
+                color: "#dddddd",
             }}
             {...props}
         />)``;
@@ -268,9 +263,8 @@ export const InstalledButton = styled(
         <InstallButtonTemplate
             icon={null}
             style={{
-                color: "#dddddd",
-                background: "#00b853",
-                borderColor: "#00b853",
+                background: "#7AF53D",
+                borderColor: "#7AF53D",
                 pointerEvents: "none"
             }}
             {...props}

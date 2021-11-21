@@ -164,7 +164,7 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                                     </div>
                                 </PageSider>
                             </SidebarCompact>
-                            <Content className="overflow-y-scroll bg-navy-dark m-0">
+                            <Content className="overflow-y-scroll bg-navy-light m-0">
                                 {sectionToShow}
                             </Content>
                         </div>
