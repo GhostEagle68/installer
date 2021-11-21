@@ -53,6 +53,7 @@ export const defaultConfiguration: Configuration = {
                             alternativeUrls: [
                                 'https://cdn.flybywiresim.com/addons/a32nx/cfbw-cap',
                                 'https://cdn.flybywiresim.com/addons/a32nx/cfbw',
+                                'https://cdn.flybywiresim.com/addons/a32nx/experimental',
                             ],
                             description: 'Development will have the latest features that will end up in the next stable. ' +
                                 'Bugs are to be expected. It updates whenever something is added to the \'master\' ' +
@@ -63,10 +64,10 @@ export const defaultConfiguration: Configuration = {
                                 branch: 'master',
                             },
                         },
-                        {
-                            name: 'Autopilot Custom',
-                            key: 'Autopilot Custom',
-                            url: 'https://cdn.flybywiresim.com/addons/a32nx/autopilot-custom-fpm',
+                        /* {
+                            name: 'Experimental',
+                            key: 'experimental',
+                            url: 'https://cdn.flybywiresim.com/addons/a32nx/experimental',
                             alternativeUrls: [],
                             description: 'This version is similar to the development version, but contains custom systems ' +
                                 'still being developed, including the new FBW Custom Flight Management System (cFMS). ' +
@@ -81,9 +82,10 @@ export const defaultConfiguration: Configuration = {
                                 '**Please be aware that no support will be offered via Discord support channels.**',
                             releaseModel: {
                                 type: 'githubBranch',
-                                branch: 'autopilot-custom-fpm',
+                                branch: 'experimental',
                             },
                         },
+                        }, */
                     ],
                 },
                 {

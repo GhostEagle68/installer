@@ -542,7 +542,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                                 )
                             }
                         </Tracks>
-                        <h5 className="text-base text-white-titleContrast ">Experimental Releases</h5>
+                        {props.addon.tracks.filter((track) => track.isExperimental).length > 0 && <h5 className="text-base text-white-titleContrast ">Experimental Releases</h5>}
                     </div>
                 </TopContainer>
                 <NewContainer>
