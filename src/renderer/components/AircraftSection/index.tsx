@@ -17,10 +17,9 @@ import {
     SwitchButton,
     TopContainer,
     UpdateButton,
-    ContentDiv,
-    NewContainer,
     VersionHistoryContainer,
-    ContDivButtons
+    ContDivButtons,
+    AddonMenuContainer
 } from './styles';
 import fs from "fs-extra";
 import * as path from 'path';
@@ -506,6 +505,37 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         <LiveryConversionDialog />
                     </DialogContainer>
                 }
+                <AddonMenuContainer>
+                    <ContDivButtons>
+                        <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                            <Adjustments className={`hover:text-blue-cyan `} size={30} />
+                            <span className="pl-3">Configure</span>
+                        </button>
+                        <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                            <Notebook className={`hover:text-blue-cyan`} size={30} />
+                            <span className="pl-3">Release Notes</span>
+                        </button>
+                        <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                            <Paint className={`hover:text-blue-cyan`} size={30} />
+                            <span className="pl-3">Liveries</span>
+                        </button>
+                        <br></br>
+                        <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
+                            <AlertCircle className={`hover:text-blue-cyan`} size={30} />
+                            <span className="pl-3">About</span>
+                        </button>
+                    </ContDivButtons>
+                    <SelectionContainer>
+                        {msfsIsOpen !== MsfsStatus.Closed && <>
+                            <ButtonContainer>
+                                <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
+                                <DisabledButton text='Update' />
+                            </ButtonContainer>
+                        </>}
+                        {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
+                    </SelectionContainer>
+                    <br></br>
+                </AddonMenuContainer>
                 <ModelInformationContainer>
                     <h5 className="text-5xl text-white-titleContrast ">Choose your {props.addon.name} Version</h5>
                 </ModelInformationContainer>
@@ -544,49 +574,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         </Tracks>
                         {props.addon.tracks.filter((track) => track.isExperimental).length > 0 && <h5 className="text-base text-white-titleContrast ">Experimental Releases</h5>}
                     </div>
-                    <div className="bg-navy-navy2 border-l-4 border-blue-cyan rounded-md text-white-titleContrast px-4 py-3 shadow-md max-w-prose  " >
-                        <div className="flex">
-                            <div className="py-1"><AlertCircle className="text-blue-cyan mr-4" size={40} /></div>
-                            <div>
-                                <p className="font-bold text-2x1">Experimental Version Update</p>
-                                <p className="text-2x1 break-words">Due to cFMS being merged into experimental, the experimental branch will be on hold until the next feature testing cycle begins.</p>
-                            </div>
-                        </div>
-                    </div>
                 </TopContainer>
-                <NewContainer>
-                    <ContentDiv>
-                        <ContDivButtons>
-                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
-                                <Adjustments className={`hover:text-blue-cyan `} size={30} />
-                                <span className="pl-3">Configure</span>
-                            </button>
-                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
-                                <Notebook className={`hover:text-blue-cyan`} size={30} />
-                                <span className="pl-3">Release Notes</span>
-                            </button>
-                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
-                                <Paint className={`hover:text-blue-cyan`} size={30} />
-                                <span className="pl-3">Liveries</span>
-                            </button>
-                            <br></br>
-                            <button className="font-semibold text-white-titleContrast rounded inline-flex items-center hover:bg-navy-light hover:text-blue-cyan pl-3 pr-3 py-3.5 ">
-                                <AlertCircle className={`hover:text-blue-cyan`} size={30} />
-                                <span className="pl-3">About</span>
-                            </button>
-                        </ContDivButtons>
-                    </ContentDiv>
-                    <SelectionContainer>
-                        {msfsIsOpen !== MsfsStatus.Closed && <>
-                            <ButtonContainer>
-                                <StateText>{msfsIsOpen === MsfsStatus.Open ? "Please close MSFS" : "Checking status..."}</StateText>
-                                <DisabledButton text='Update' />
-                            </ButtonContainer>
-                        </>}
-                        {msfsIsOpen === MsfsStatus.Closed && getInstallButton()}
-                    </SelectionContainer>
-                    <br></br>
-                </NewContainer>
                 <LeftContainer>
                     <DetailsContainer>
                         <h3 className="font-semibold text-white-titleContrast">About</h3>
@@ -598,6 +586,22 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         />
                         <h3 className="font-semibold text-white-titleContrast">About the {props.addon.aircraftName}</h3>
                         <p className="text-lg text-gray-300">{props.addon.description}</p>
+                    </DetailsContainer>
+                    <br></br>
+                    <div className="flex flex-row justify-start space-x-96 mb-3.5 mt-3.5 mr-2 ">
+                        <h3 className="font-semibold text-white-titleContrast">Release Notes</h3>
+
+                        <select
+                            className="text-lg font-semibold text-white-titleContrast w-60 rounded-md outline-none bg-navy-navy2 border-2 border-navy-navy2 px-2 cursor-pointer"
+                        >
+                            <option>Stable</option>
+                            <option>Development</option>
+                            <option>Experimental</option>
+                        </select>
+                    </div>
+                    <DetailsContainer>
+                        <h3 className="font-semibold text-white-titleContrast">Name of stable version/commit(s)</h3>
+                        <p className="text-lg text-gray-300">Once coded, this will hold all the release notes/commits for the currently selected branch!</p>
                     </DetailsContainer>
                 </LeftContainer>
             </Content>

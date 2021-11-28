@@ -50,7 +50,7 @@ export const ModelInformationContainer = styled.div`
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: stretch;
 `;
 
@@ -147,18 +147,6 @@ border-radius: 0.375rem;
 padding: 10px;
 `;
 
-export const ContentDiv = styled.div`
-grid-column: start / end;
-
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: left;
-background-color: #171E2C;
-border-radius: 0.375rem;
-padding: 10px;
-`;
-
 export const ContDivButtons = styled.div`
 display: inline-block;
 font-size: ${fontSizes.big} !important;
@@ -171,7 +159,7 @@ export const VersionHistoryContainer = styled.div`
   padding: 5px;
 `;
 
-export const NewContainer = styled.div`
+export const AddonMenuContainer = styled.div`
   grid-row: 3;
   border-radius: 0.375rem;
   padding: 5px;
