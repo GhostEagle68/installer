@@ -22,6 +22,8 @@ module.exports = {
                 '700px': '700px',
             },
             colors: {
+                'quasi-white': '#fafafa',
+                cyan: '#00E0FE',
                 navy: {
                     'lightest': '#273347',
                     'lighter': '#222c3d',
