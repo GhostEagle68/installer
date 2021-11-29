@@ -224,7 +224,8 @@ export const UpdateButton = styled(
     props =>
         <InstallButtonTemplate
             style={{
-                background: "#00CCFF",
+                color: "#FAFAFA",
+                background: "linear-gradient(45.83deg, #00C4F5 23.93%, #28A9E2 73.93%)",
                 borderColor: "#00CCFF",
             }}
             {...props}
@@ -234,7 +235,8 @@ export const SwitchButton = styled(
     props =>
         <InstallButtonTemplate
             style={{
-                background: "#00CCFF",
+                color: "#FAFAFA",
+                background: "linear-gradient(45.83deg, #00C4F5 23.93%, #28A9E2 73.93%)",
                 borderColor: "#00CCFF"
             }}
             {...props}
@@ -247,7 +249,7 @@ export const CancelButton = styled(
             style={{
                 background: "#FF2D1A",
                 borderColor: "#FF2D1A",
-                color: "#dddddd",
+                color: "#FAFAFA",
             }}
             {...props}
         />)``;
@@ -257,7 +259,7 @@ export const InstalledButton = styled(
         <InstallButtonTemplate
             icon={null}
             style={{
-                background: "#7AF53D",
+                background: "linear-gradient(90deg, #6AF425 0%, #7AF53D 100%)",
                 borderColor: "#7AF53D",
                 pointerEvents: "none"
             }}
@@ -269,7 +271,7 @@ export const DisabledButton = styled(
         <InstallButtonTemplate
             icon={null}
             style={{
-                color: "#dddddd",
+                color: "#FAFAFA",
                 background: "#2e3236",
                 borderColor: "#2e3236",
                 pointerEvents: "none"
