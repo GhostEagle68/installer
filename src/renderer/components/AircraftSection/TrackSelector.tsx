@@ -30,10 +30,10 @@ export const Track: React.FC<TrackProps> = ({ isSelected, isInstalled, handleSel
 
     const makeBorderStyle = () => {
         if (isInstalled) {
-            return 'bg-green-lime';
+            return 'bg-gradient-to-r from-green-stop to-green-lime';
         } else {
             if (isSelected) {
-                return 'bg-blue-sky';
+                return 'bg-gradient-to-r from-blue-cyan to-blue-sky';
             }
         }
     };

@@ -44,6 +44,7 @@ module.exports = {
                 },
                 green: {
                     'lime': '#7AF53D',
+                    'stop': '#6AF425'
                 },
                 white: {
                     'titleContrast': '#FFFFFFDD',
