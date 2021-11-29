@@ -40,7 +40,8 @@ module.exports = {
                 },
                 blue: {
                     'cyan': '#00E0FE',
-                    'sky': '#00CCFF'
+                    'sky': '#00CCFF',
+                    'bluegray': '#47536B'
                 },
                 green: {
                     'lime': '#7AF53D',
