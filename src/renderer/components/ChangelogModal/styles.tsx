@@ -30,6 +30,6 @@ export const Close = styled.div`
         stroke: ${colors.gray50};
     }
     svg:hover {
-        stroke: ${colors.red};
+        stroke: #FF2D1A;
     }
 `;
