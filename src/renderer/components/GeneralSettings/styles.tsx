@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const PageTitle = styled.span`
   font-size: 20px;
   margin-bottom: 30px;
+  color: #00E0FE;
 `;
 
 export const SettingsItems = styled.div`
