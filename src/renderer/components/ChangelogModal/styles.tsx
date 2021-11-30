@@ -18,7 +18,7 @@ export const InnerContainer = styled.div`
         margin: auto;
     }
     h1, h2 {
-        color: ${colors.gray50};
+        color: #00E0FE;
     }
     p {
         font-size: 22px;
