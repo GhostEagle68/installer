@@ -21,7 +21,7 @@ const ShowChangelog = (props: ChangelogProps) => {
         const html = marked(changelog);
         return (
             <div className="flex justify-center items-center fixed z-20 left-0 top-0 w-screen h-screen overflow-auto bg-black bg-opacity-40">
-                <div className="relative w-700px h-450px bg-navy-dark flex flex-col rounded-lg text-quasi-white p-5">
+                <div className="relative w-700px h-450px bg-navy-navy2 flex flex-col rounded-lg text-quasi-white p-5">
                     <Close className="absolute right-5 text-xl h-8 w-8 cursor-pointer" onClick={hideChangelog}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" viewBox="0 0 24 24" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
