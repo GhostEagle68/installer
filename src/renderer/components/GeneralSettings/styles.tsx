@@ -59,16 +59,16 @@ export const InfoButton = styled.h6`
 export const ResetButton = styled.button`
   padding: 0.2em 0.5em 0.2em 0.5em;
   margin-top: 1.5em;
-  color: white !important;
-  background: ${colors.red};
+  color: #fafafa !important;
+  background: #D10303;
   border: 2px solid;
-  border-color: ${colors.red};
+  border-color: #D10303;
   border-radius: 5px;
   cursor: pointer;
   font-size: 15px;
 
   :hover {
-    background: ${colors.redDarker};
-    border-color: ${colors.redDarker};
+    background: #FF2D1A;
+    border-color: #FF2D1A;
   }
 `;

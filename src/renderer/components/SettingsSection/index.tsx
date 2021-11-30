@@ -6,17 +6,17 @@ import GeneralSettings from 'renderer/components/GeneralSettings';
 
 function index(): JSX.Element {
     return (
-        <Container className="bg-navy-lighter">
+        <Container className="bg-navy-navy2 rounded-lg">
             <Layout>
                 <PageSider>
-                    <Menu theme="dark" mode="inline" style={{ width: 256, backgroundColor: '#222c3d', color: 'white' }}
+                    <Menu theme="dark" mode="inline" style={{ width: 256, backgroundColor: '#171E2C', color: '#fafafa' }}
                         defaultSelectedKeys={['general-settings']}>
-                        <Menu.Item key="general-settings" style={{ backgroundColor: '#009ba2', }}>
+                        <Menu.Item key="general-settings" style={{ backgroundColor: '#0E131B', }}>
                             General Settings
                         </Menu.Item>
                     </Menu>
                 </PageSider>
-                <Layout.Content className="pl-24 bg-navy-lighter">
+                <Layout.Content className="pl-24 bg-navy-navy2">
                     <GeneralSettings />
                 </Layout.Content>
             </Layout>

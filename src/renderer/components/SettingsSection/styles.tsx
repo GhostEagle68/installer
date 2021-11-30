@@ -12,11 +12,11 @@ export const Container = styled.div`
 `;
 
 export const Menu = styled(AntdMenu)`
-  border-right: 1px solid #bfbfbf !important;
+  border-right: 4px solid #00CCFF !important;
 `;
 
 export const PageSider = styled(Layout.Sider)`
-    background-color: #222c3d;
+    background-color: #171E2C;
     
     .ant-layout-sider-trigger {
         height: 40px;

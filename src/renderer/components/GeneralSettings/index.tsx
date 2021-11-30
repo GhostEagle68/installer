@@ -72,7 +72,7 @@ const SeparateLiveriesPathSettingItem = (props: {separateLiveriesPath: boolean, 
 
     return (
         <>
-            <div className="h-0.5 bg-gray-700"></div>
+            <div className="h-0.5 bg-blue-bluegray"></div>
             <div className="flex items-center mb-3.5 mt-3.5">
                 <span className="text-base">Separate Liveries Directory</span>
                 <div className="ml-auto">
@@ -95,7 +95,7 @@ const DisableWarningSettingItem = (props: {disableWarning: boolean, setDisableWa
 
     return (
         <>
-            <div className="h-0.5 bg-gray-700"></div>
+            <div className="h-0.5 bg-blue-bluegray"></div>
             <div className="flex items-center mb-3.5 mt-3.5">
                 <span className="text-base">Disable Version Warnings</span>
                 <div className="ml-auto">
@@ -123,7 +123,7 @@ const DisableLiveryWarningItem = (props: {disableWarning: boolean, setDisableWar
 
     return (
         <>
-            <div className="h-0.5 bg-gray-700"></div>
+            <div className="h-0.5 bg-blue-bluegray"></div>
             <div className="flex items-center mb-3.5 mt-3.5">
                 <span className="text-base">Disable Incompatible Livery Warnings</span>
                 <div className="ml-auto">
@@ -146,7 +146,7 @@ const UseCdnSettingItem = (props: {useCdnCache: boolean, setUseCdnCache: Callabl
 
     return (
         <>
-            <div className="h-0.5 bg-gray-700"></div>
+            <div className="h-0.5 bg-blue-bluegray"></div>
             <div className="flex items-center mb-3.5 mt-3.5">
                 <span className="text-base">Use CDN Cache (Faster Downloads)</span>
                 <div className="ml-auto">
@@ -169,7 +169,7 @@ const DateLayoutItem = (props: {dateLayout: string, setDateLayout: CallableFunct
 
     return (
         <>
-            <div className="h-0.5 bg-gray-700"></div>
+            <div className="h-0.5 bg-blue-bluegray"></div>
             <div className="flex flex-row justify-between mb-3.5 mt-3.5 mr-2">
                 <SettingItemName>{'Date Layout'}</SettingItemName>
                 <select
@@ -177,7 +177,7 @@ const DateLayoutItem = (props: {dateLayout: string, setDateLayout: CallableFunct
                     onChange={event => handleSelect(event.currentTarget.value)}
                     name="Date Layout"
                     id="datelayout-list"
-                    className="text-base text-white w-60 rounded-md outline-none bg-navy border-2 border-navy px-2 cursor-pointer"
+                    className="text-base text-white w-60 rounded-md outline-none bg-navy-light border-2 border-navy-light px-2 cursor-pointer"
                 >
                     <option value={'yyyy/mm/dd'}>YYYY/MM/DD</option>
                     <option value={'mm/dd/yyyy'}>MM/DD/YYYY</option>
