@@ -23,7 +23,6 @@ module.exports = {
             },
             colors: {
                 'quasi-white': '#fafafa',
-                cyan: '#00E0FE',
                 navy: {
                     'lightest': '#273347',
                     'lighter': '#222c3d',
