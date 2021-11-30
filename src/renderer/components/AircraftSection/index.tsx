@@ -494,6 +494,22 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
         );
     };
 
+    /* code for release notes once code to fetch API is made uwu
+                        <h3 className="font-semibold text-white-titleContrast">Release Notes</h3>
+                    <DetailsContainer>
+                        <h3 className="font-semibold text-white-titleContrast">Name of stable version/commit(s)
+                            <select
+                                className="text-lg font-semibold text-white-titleContrast w-60 rounded-md outline-none bg-navy-light border-2 border-navy-light px-2 cursor-pointer"
+                            >
+                                <option>Stable</option>
+                                <option>Development</option>
+                                <option>Experimental</option>
+                            </select>
+                        </h3>
+                        <p className="text-lg text-gray-300">Once coded, this will hold all the release notes/commits for the currently selected branch!</p>
+                    </DetailsContainer>
+    */
+
     return (
         <div className={`bg-navy-light ${wait ? 'hidden' : 'visible'}`}>
             <HeaderImage>
@@ -577,7 +593,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                 </TopContainer>
                 <LeftContainer>
                     <DetailsContainer>
-                        <h3 className="font-semibold text-white-titleContrast">About</h3>
+                        <h3 className="font-semibold text-white-titleContrast">About this version</h3>
                         <ReactMarkdown
                             className="text-lg text-gray-300"
                             children={selectedTrack?.description ?? ''}
@@ -588,21 +604,6 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
                         <p className="text-lg text-gray-300">{props.addon.description}</p>
                     </DetailsContainer>
                     <br></br>
-                    <div className="flex flex-row justify-start space-x-96 mb-3.5 mt-3.5 mr-2 ">
-                        <h3 className="font-semibold text-white-titleContrast">Release Notes</h3>
-
-                        <select
-                            className="text-lg font-semibold text-white-titleContrast w-60 rounded-md outline-none bg-navy-navy2 border-2 border-navy-navy2 px-2 cursor-pointer"
-                        >
-                            <option>Stable</option>
-                            <option>Development</option>
-                            <option>Experimental</option>
-                        </select>
-                    </div>
-                    <DetailsContainer>
-                        <h3 className="font-semibold text-white-titleContrast">Name of stable version/commit(s)</h3>
-                        <p className="text-lg text-gray-300">Once coded, this will hold all the release notes/commits for the currently selected branch!</p>
-                    </DetailsContainer>
                 </LeftContainer>
             </Content>
         </div>
