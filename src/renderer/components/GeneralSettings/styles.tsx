@@ -13,7 +13,7 @@ export const PageTitle = styled.span`
 `;
 
 export const SettingsItems = styled.div`
-  border-bottom: 1px solid #bfbfbf;
+  border-bottom: 3px solid #47536B;
 `;
 
 export const SettingsItem = styled.div`
@@ -42,7 +42,7 @@ export const SettingItemContent = styled.span`
     cursor: pointer;
 
     :hover {
-      color: ${colors.mutedTextDark} !important;
+      color: ${colors.teal50} !important;
     }
 `;
 
@@ -52,7 +52,7 @@ export const InfoButton = styled.h6`
   cursor: pointer;
 
   :hover {
-    color: ${colors.mutedTextDark} !important;
+    color: ${colors.teal50} !important;
   }
 `;
 
