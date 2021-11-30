@@ -10,7 +10,7 @@ export type SidebarItemProps = { enabled?: boolean, iSelected: boolean, onClick:
 export const SidebarItem: React.FC<SidebarItemProps> = ({ enabled = true, iSelected, onClick, children, className }) => {
     return (
         <div
-            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-navy-light' : 'bg-navy-dark'} ${enabled ? 'hover:bg-navy-light' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
+            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-gradient-to-r from-blue-cyan to-blue-sky' : 'bg-navy-dark'} ${enabled ? 'hover:bg-navy-navy2' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
             onClick={onClick}
         >{children}</div>
     );
@@ -91,15 +91,15 @@ export const SidebarAddon: React.FC<SidebarAddonProps> = ({ addon, isSelected, h
     const Icon = () => {
         switch (icon) {
             case 'notAvailable':
-                return <AlertTriangle className="text-red-offred ml-auto mr-4" size={28} />;
+                return <AlertTriangle className="text-quasi-white ml-auto mr-4" size={28} />;
             case 'install':
-                return <ArrowBarToDown className="text-blue-cyan ml-auto mr-4" size={28} />;
+                return <ArrowBarToDown className="text-quasi-white ml-auto mr-4" size={28} />;
             case 'installing':
-                return <Rotate2 className="text-blue-cyan ml-auto mr-4 animate-spin-reverse" size={28} />;
+                return <Rotate2 className="text-quasi-white ml-auto mr-4 animate-spin-reverse" size={28} />;
             case 'installed':
-                return <CircleCheck className="text-green-lime ml-auto mr-4" size={28} />;
+                return <CircleCheck className="text-quasi-white ml-auto mr-4" size={28} />;
             case 'update':
-                return <ArrowBarToDown className="text-blue-cyan ml-auto mr-4" size={28} />;
+                return <ArrowBarToDown className="text-quasi-white ml-auto mr-4" size={28} />;
         }
     };
 
@@ -110,8 +110,8 @@ export const SidebarAddon: React.FC<SidebarAddonProps> = ({ addon, isSelected, h
             }
         }}>
             <div className={`flex flex-col ml-3 ${addon.enabled ? 'opacity-100' : 'opacity-60'}`}>
-                <span className="text-xl text-gray-200 font-semibold" key={addon.key}>{addon.name}</span>
-                <code className="text-lg text-teal-50">{downloadState}</code>
+                <span className= 'text-xl text-quasi-white font-bold' key={addon.key}>{addon.name}</span>
+                <code className="text-lg text-quasi-white">{downloadState}</code>
             </div>
 
             <Icon />
