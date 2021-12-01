@@ -222,7 +222,7 @@ function index(): JSX.Element {
             <div className="flex flex-row justify-between pr-4">
                 <div className="flex flex-row justify-start gap-3">
                     <InfoButton onClick={showChangelog}>v{packageInfo.version}</InfoButton>
-                    <h6 className="mt-6 text-gray-600">|</h6>
+                    <h6 className="mt-6 text-blue-bluegray">|</h6>
                     <InfoButton onClick={openThirdPartyLicenses}>Third party licenses</InfoButton>
                 </div>
                 <ResetButton onClick={handleReset}>Reset settings to default</ResetButton>
