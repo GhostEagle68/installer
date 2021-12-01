@@ -19,6 +19,7 @@ export const InnerContainer = styled.div`
     }
     h1, h2 {
         color: #00E0FE;
+        font-weight: bold;
     }
     p {
         font-size: 22px;
