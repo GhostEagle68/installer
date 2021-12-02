@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from "renderer/style/theme";
+import { colors, dropShadow } from "renderer/style/theme";
 
 export const Container = styled.div`
     display: flex;
@@ -51,15 +51,16 @@ export const InfoButton = styled.h6`
   margin-top: 1.5em;
   color: #fafafa !important;
   cursor: pointer;
-  padding-left: 1rem/* 16px */;
-  padding-right: 1rem/* 16px */;
-  padding-top: 0.5rem/* 8px */;
-  padding-bottom: 0.5rem/* 8px */;
-  border-radius: 0.375rem/* 6px */;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.375rem;
   background: linear-gradient(45.83deg, #00C4F5 23.93%, #28A9E2 73.93%);
 
   :hover {
     color: #FFFFFFDD !important;
+    ${dropShadow};
   }
 `;
 
