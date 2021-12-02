@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const PageTitle = styled.span`
-  font-size: 20px;
+  font-size: 35px;
   margin-bottom: 30px;
   color: #00E0FE;
 `;
@@ -49,11 +49,17 @@ export const SettingItemContent = styled.span`
 
 export const InfoButton = styled.h6`
   margin-top: 1.5em;
-  color: ${colors.mutedText} !important;
+  color: #fafafa !important;
   cursor: pointer;
+  padding-left: 1rem/* 16px */;
+  padding-right: 1rem/* 16px */;
+  padding-top: 0.5rem/* 8px */;
+  padding-bottom: 0.5rem/* 8px */;
+  border-radius: 0.375rem/* 6px */;
+  background: linear-gradient(45.83deg, #00C4F5 23.93%, #28A9E2 73.93%);
 
   :hover {
-    color: ${colors.teal50} !important;
+    color: #FFFFFFDD !important;
   }
 `;
 
