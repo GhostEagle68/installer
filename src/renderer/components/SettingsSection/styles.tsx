@@ -12,7 +12,8 @@ export const Container = styled.div`
 `;
 
 export const Menu = styled(AntdMenu)`
-  border-right: 4px solid #00CCFF !important;
+  padding-left: 10px;
+
 `;
 
 export const PageSider = styled(Layout.Sider)`
