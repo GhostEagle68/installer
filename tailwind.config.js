@@ -48,6 +48,9 @@ module.exports = {
                 },
                 white: {
                     'titleContrast': '#FFFFFFDD',
+                },
+                gray: {
+                    medium: '#B1AEAE',
                 }
             },
             boxShadow: {
