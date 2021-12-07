@@ -3,14 +3,14 @@ import { Select, Progress } from 'antd';
 import styled from 'styled-components';
 import { DownloadOutlined } from '@ant-design/icons';
 import { colors, dropShadow, fontSizes } from "renderer/style/theme";
-import headerBackground from "renderer/assets/EZYBG.png";
+import headerBackground from "renderer/assets/a32nx-background-3.png";
 
 export const Container = styled.div<{ wait: number }>`
     visibility: ${props => props.wait ? 'hidden' : 'visible'};
 `;
 
 export const HeaderImage = styled.div`
-    height: 35vh;
+    height: 400px;
     max-height: 400px;
     background-image: url(${headerBackground});
     background-size: cover;

@@ -17,6 +17,7 @@ import {
     SwitchButton,
     TopContainer,
     UpdateButton,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     VersionHistoryContainer,
     ContDivButtons,
     AddonMenuContainer
@@ -43,6 +44,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import settings from "common/settings";
 import { ipcRenderer } from 'electron';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Version, Versions } from './VersionHistory';
 import { Adjustments, AlertCircle, Notebook, Paint, } from 'tabler-icons-react';
 
@@ -148,7 +150,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
 
     const [wait, setWait] = useState(1);
 
-    const [releases, setReleases] = useState<AddonVersion[]>([]);
+    const [, setReleases] = useState<AddonVersion[]>([]);
 
     useEffect(() => {
         getAddonReleases(props.addon).then(releases => {
@@ -478,8 +480,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
         return state.liveries.map((entry) => entry.livery);
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const ReleaseHistory = () =>{
+    /*    const ReleaseHistory = () =>{
         return (
             <VersionHistoryContainer>
                 <h3 className="font-semibold text-white-titleContrast">Release History</h3>
@@ -494,7 +495,7 @@ const index: React.FC<TransferredProps> = (props: AircraftSectionProps) => {
         );
     };
 
-    /* code for release notes once code to fetch API is made uwu
+    code for release notes once code to fetch API is made uwu
                         <h3 className="font-semibold text-white-titleContrast">Release Notes</h3>
                     <DetailsContainer>
                         <h3 className="font-semibold text-white-titleContrast">Name of stable version/commit(s)
