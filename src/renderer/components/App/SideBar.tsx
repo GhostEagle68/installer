@@ -10,7 +10,7 @@ export type SidebarItemProps = { enabled?: boolean, iSelected: boolean, onClick:
 export const SidebarItem: React.FC<SidebarItemProps> = ({ enabled = true, iSelected, onClick, children, className }) => {
     return (
         <div
-            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-gradient-to-r from-blue-cyan to-blue-sky' : 'bg-navy-dark'} ${enabled ? 'hover:bg-navy-navy2' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
+            className={`w-full flex flex-row items-center transition-all duration-200 ${iSelected ? 'bg-navy-light' : 'bg-navy-dark'} ${enabled ? 'hover:bg-navy-navy2' : ''} pl-5 py-4 ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
             onClick={onClick}
         >{children}</div>
     );
