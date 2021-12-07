@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from 'renderer/assets/new fbw logo.png';
+import logo from 'renderer/assets/installer-header.svg';
 import fullLogo from 'renderer/assets/FBW-Logo-White.svg';
-import { Container, Title } from './styles';
+import { Container, } from './styles';
 
 export const Logo = (): JSX.Element => (
     <Container>
-        <img src={logo} alt="FlyByWire Logo" id="fbw-logo" style={{ transform: 'scale(1.35)' }}/>
-        <Title>FlyByWire Installer</Title>
+        <img src={logo} alt="FlyByWire Logo" id="fbw-logo" style={{ height: '2.5rem' }}/>
     </Container>
 );
 
