@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { BorderOutlined, CloseOutlined, MinusOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { BorderOutlined, CloseOutlined, ExclamationCircleOutlined, MinusOutlined, } from '@ant-design/icons';
 import { shell } from 'electron';
 
 export type ButtonProps = { id?: string, className?: string, onClick?: () => void, isClose?: boolean }
@@ -7,7 +7,7 @@ export type ButtonProps = { id?: string, className?: string, onClick?: () => voi
 export const Button: React.FC<ButtonProps> = ({ id, className, onClick, isClose, children }: PropsWithChildren<ButtonProps>) => {
     return (
         <button
-            className={`w-14 h-full flex flex-row justify-center items-center text-gray-200 ${isClose ? 'hover:bg-red-500' : 'hover:bg-gray-700'} ${className}`}
+            className={`w-14 h-full flex flex-row justify-center items-center text-gray-medium ${isClose ? 'hover:text-red-offred hover:bg-navy-light' : 'hover:text-quasi-white hover:bg-navy-light'} ${className}`}
             onClick={onClick ?? (() => {})}
             id={id}
         >
