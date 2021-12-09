@@ -39,7 +39,7 @@ export const Track: React.FC<TrackProps> = ({ isSelected, isInstalled, handleSel
                 <span className="text-lg text-current -mt-0.5">{latestVersionName}</span>
             </div>
             {isInstalled && (
-                <Check className={`absolute right-2 text-cyan stroke-current`} strokeWidth={3}/>
+                <Check className={`absolute right-2 text-green-lime stroke-current`} strokeWidth={3}/>
             )}
         </div>
     );
