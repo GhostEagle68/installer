@@ -111,7 +111,7 @@ export const defaultConfiguration: Configuration = {
                     key: 'A22X',
                     enabled: false,
                     menuIconUrl: A320NoseSVG,
-                    backgroundImageUrl: 'https://nyc3.digitaloceanspaces.com/fselite/2020/11/123263426_126778999193686_7966913238295950901_o.png',
+                    backgroundImageUrl: 'https://cdn.discordapp.com/attachments/801890139038679060/914248025533218886/unkno213wn.png',
                     shortDescription: 'Airbus A220-300 (CSeries 300)',
                     description: '',
                     targetDirectory: 'A22X',
