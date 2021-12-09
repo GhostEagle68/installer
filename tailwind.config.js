@@ -43,6 +43,10 @@ module.exports = {
                     darker: '#E40303',
                     darkest: '#D10303',
                 },
+                green: {
+                    'lime': '#7AF53D',
+                    'stop': '#6AF425'
+                },
             },
             boxShadow: {
                 'inner-sm': 'inset 0 1px 2px 0 rgba(0, 0, 0, 0.05)'
