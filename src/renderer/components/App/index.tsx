@@ -20,8 +20,9 @@ import { Configuration, Addon, AddonVersion } from "renderer/utils/InstallerConf
 import { AddonData } from "renderer/utils/AddonData";
 import { ErrorModal } from '../ErrorModal';
 import { NavBar, NavBarPublisher } from "renderer/components/App/NavBar";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { AddonBar, AddonBarItem } from "renderer/components/App/AddonBar";
+import { NoAvailableAddonsSection } from '../NoAvailableAddonsSection';
 
 const releaseCache = new DataCache<AddonVersion[]>('releases', 1000 * 3600 * 24);
 
@@ -74,6 +75,8 @@ export const fetchLatestVersionNames = async (addon: Addon): Promise<void> => {
 };
 
 const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
+    const history = useHistory();
+
     const [addons] = useState<Addon[]>(
         configuration.publishers.reduce((arr, curr) => {
             arr.push(...curr.addons);
@@ -89,8 +92,21 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
     const [selectedPublisher, setSelectedPublisher] = useState(configuration.publishers[0]);
 
     useEffect(() => {
-        fetchLatestVersionNames(selectedPublisher.addons[0]).then(() => {
-            setSelectedAddon(selectedPublisher.addons[0]);
+        let firstAvailableAddon: Addon;
+
+        selectedPublisher.addons.forEach(addon => {
+            if (addon.enabled) {
+                firstAvailableAddon = addon;
+            }
+        });
+
+        if (!firstAvailableAddon) {
+            history.push('/no-available-addons');
+            return;
+        }
+
+        fetchLatestVersionNames(firstAvailableAddon).then(() => {
+            setSelectedAddon(firstAvailableAddon);
         });
     }, [selectedPublisher]);
 
@@ -108,31 +124,33 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                         <div className="absolute w-full h-10 z-50 flex flex-row pl-4 items-center bg-navy-dark shadow-xl">
                             <PageHeader className="h-full flex-1 flex flex-row items-stretch">
                                 <Logo />
-                                <InstallerUpdate />
                             </PageHeader>
 
+                            <InstallerUpdate />
                             <WindowButtons />
                         </div>
 
                         <div className="h-full pt-10 flex flex-row justify-start">
-                            <NavBar>
-                                {configuration.publishers.map((publisher) => (
-                                    <NavBarPublisher
-                                        selected={selectedPublisher === publisher}
-                                        publisher={publisher}
-                                        onClick={() => setSelectedPublisher(publisher)}
-                                    />
-                                ))}
-                            </NavBar>
-                            <PageSider className="z-40 flex-none bg-navy-medium shadow-2xl h-full" style={{ width: '26rem' }}>
-                                <div className="h-full flex flex-col divide-y divide-gray-700">
-                                    <AddonBar publisher={selectedPublisher}>
-                                        {selectedPublisher.addons.map((addon) => (
-                                            <AddonBarItem selected={selectedAddon.key === addon.key && addon.enabled} enabled={addon.enabled} className="h-32" addon={addon} onClick={() => setSelectedAddon(addon)} />
-                                        ))}
-                                    </AddonBar>
-                                </div>
-                            </PageSider>
+                            <div className="z-50 flex flex-row">
+                                <NavBar>
+                                    {configuration.publishers.map((publisher) => (
+                                        <NavBarPublisher
+                                            selected={selectedPublisher === publisher}
+                                            publisher={publisher}
+                                            onClick={() => setSelectedPublisher(publisher)}
+                                        />
+                                    ))}
+                                </NavBar>
+                                <PageSider className="flex-none bg-navy-medium shadow-2xl h-full" style={{ width: '26rem' }}>
+                                    <div className="h-full flex flex-col divide-y divide-gray-700">
+                                        <AddonBar publisher={selectedPublisher}>
+                                            {selectedPublisher.addons.map((addon) => (
+                                                <AddonBarItem selected={selectedAddon.key === addon.key && addon.enabled} enabled={addon.enabled} className="h-32" addon={addon} onClick={() => setSelectedAddon(addon)} />
+                                            ))}
+                                        </AddonBar>
+                                    </div>
+                                </PageSider>
+                            </div>
                             <div className="bg-navy m-0 w-full">
                                 <Switch>
                                     <Route exact path="/">
@@ -146,6 +164,9 @@ const App: React.FC<{ configuration: Configuration }> = ({ configuration }) => {
                                     </Route>
                                     <Route path="/settings">
                                         <SettingsSection/>
+                                    </Route>
+                                    <Route path="/no-available-addons">
+                                        <NoAvailableAddonsSection/>
                                     </Route>
                                 </Switch>
                             </div>
